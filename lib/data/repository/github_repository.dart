@@ -24,15 +24,7 @@ class GithubRepositoryImpl implements GithubRepository {
     final repo = await _remoteDataSource.getUserRepoDetail(username: username, repoName: repoName);
     final contributors = await _remoteDataSource.getContributors(username: username, repoName: repoName);
 
-    return RepoEntity(
-      id: repo.id.toString(),
-      name: repo.name ?? '',
-      description: repo.description ?? '',
-      language: repo.language ?? '',
-      sshUrl: repo.sshUrl ?? '',
-      stargazersCount: repo.stargazersCount ?? 0,
-      contributors: contributors.map(mapToContributorEntity).toList(),
-    );
+    return mapToRepoEntity(repo, contributors);
   }
 }
 

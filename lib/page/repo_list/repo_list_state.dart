@@ -34,7 +34,7 @@ class RepoListStateNotifier extends StateNotifier<RepoListState> {
       setState((s) => s.copyWith(loading: false, items: items));
     } catch (e) {
       // TODO: map error message
-      setState((s) => s.copyWith(loading: false, errorMessage: e.toString()));
+      setState((s) => s.copyWith(loading: false, errorMessage: 'Failed to fetch repos'));
     }
   }
 
